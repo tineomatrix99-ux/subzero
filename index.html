@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBZERO ADEGA | Mortal Kombat Edition - Jardim América, SP</title>
+    <meta name="description" content="Subzero Adega Mortal Kombat Edition na Av. Guadalupe, 299 - Jardim América, SP. Finish Your Thirst! As bebidas mais geladas do reino. Peça pelo WhatsApp!">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Google Fonts: Orbitron & Cinzel & Teko & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Orbitron:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mk: {
+                            blue: '#00d4ff',
+                            ice: '#70f0ff',
+                            frost: '#0284c7',
+                            deep: '#030712',
+                            card: '#081021',
+                            blood: '#ef4444',
+                            gold: '#fbbf24',
+                            darkstone: '#0b1320'
+                        }
+                    },
+                    fontFamily: {
+                        mk: ['Orbitron', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        teko: ['Teko', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'ice-blast': '0 0 30px rgba(0, 212, 255, 0.5), inset 0 0 15px rgba(0, 212, 255, 0.2)',
+                        'freeze-glow': '0 0 20px rgba(112, 240, 255, 0.4)',
+                        'blood-glow': '0 0 25px rgba(239, 68, 68, 0.6)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(0, 212, 255, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 10% 80%, rgba(2, 132, 199, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 60%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                linear-gradient(to bottom, #030712, #060d1a, #030712);
+        }
+
+        .font-mk { font-family: 'Orbitron', sans-serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-teko { font-family: 'Teko', sans-serif; }
+
+        /* MK Slanted Borders and Arcade Frames */
+        .mk-clip {
+            clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+        }
+        .mk-clip-box {
+            clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+        }
+
+        /* Ninja Frost Panels */
+        .mk-panel {
+            background: rgba(8, 16, 33, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            position: relative;
+        }
+        .mk-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00d4ff;
+            border-left: 2px solid #00d4ff;
+        }
+        .mk-panel::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #00d4ff;
+            border-right: 2px solid #00d4ff;
+        }
+
+        /* Ice Crack Accent */
+        .ice-border-glow {
+            border: 1px solid #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4), inset 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        /* MK Character Card */
+        .fighter-card {
+            background: linear-gradient(180deg, rgba(11, 23, 44, 0.9) 0%, rgba(4, 9, 20, 0.95) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .fighter-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: #00d4ff;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.45);
+        }
+        .fighter-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(0, 212, 255, 0.12) 50%, transparent 60%);
+            transform: rotate(25deg);
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+        .fighter-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Health bar animation */
+        .health-bar {
+            background: linear-gradient(90deg, #00d4ff 0%, #38bdf8 70%, #ffffff 100%);
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 2px; }
+
+        /* Ice Particle Canvas background */
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.55;
+        }
+
+        /* Video Background Container */
+        .video-background-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .video-background-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            filter: contrast(115%) brightness(85%);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-cyan-400 selection:text-black">
+
+    <!-- Video Background Mortal Kombat Realm -->
+    <div class="video-background-container">
+        <video id="bgVideo" autoplay loop muted playsinline>
+            <source src="background.webm" type="video/webm">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay sombrio e azul gélido para manter contraste e legibilidade perfeita -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030712]/85 via-[#030712]/60 to-[#030712]/90"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#030712_85%)]"></div>
+    </div>
+
+    <!-- Canvas de Efeito de Gelo / Nevasca Lin Kuei -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- Modal de Verificação de Idade: Mortal Kombat Style -->
+    <div id="mkAgeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-lg transition-opacity duration-300">
+        <div class="relative w-full max-w-lg p-8 mk-panel mk-clip-box text-center shadow-ice-blast border-2 border-cyan-400">
+            
+            <!-- Lin Kuei Dragon Emblem / Ninja Mask -->
+            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-cyan-950/80 border-2 border-cyan-400 flex items-center justify-center text-cyan-300 text-4xl shadow-freeze-glow">
+                <i class="fa-solid fa-mask"></i>
+            </div>
+
+            <div class="inline-block px-3 py-1 rounded bg-red-950/80 border border-red-500 text-red-400 text-xs font-mk uppercase tracking-widest mb-3">
+                Lin Kuei Clan Protocol
+            </div>
+
+            <h3 class="text-3xl font-black font-mk text-white uppercase tracking-wider mb-2">
+                PROVE YOUR <span class="text-cyan-400">AGE</span>
+            </h3>
+
+            <p class="text-slate-300 text-sm mb-6 font-body leading-relaxed">
+                Você tem <strong>18 anos ou mais</strong> para entrar no santuário da <strong class="text-cyan-300">Subzero Adega</strong> e desbloquear o arsenal de bebidas alcoólicas?
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button onclick="confirmAge(true)" class="flex-1 py-3.5 px-6 mk-clip bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-black font-mk text-sm tracking-wider uppercase transition-all shadow-freeze-glow transform hover:scale-105">
+                    <i class="fa-solid fa-hand-fist mr-2"></i> SIM, SOU 18+
+                </button>
+                <button onclick="confirmAge(false)" class="flex-1 py-3.5 px-6 mk-clip bg-red-950/80 hover:bg-red-900 border border-red-600 text-red-200 font-bold font-mk text-sm tracking-wider uppercase transition-all">
+                    NÃO (SAIR)
+                </button>
+            </div>
+
+            <div class="mt-5 text-[11px] text-slate-500 font-mk tracking-widest uppercase flex items-center justify-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+                Venda proibida para menores &bull; Beba com moderação
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / MK Realm Bar -->
+    <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b-2 border-cyan-500/40">
+        
+        <!-- Kombat Ticker -->
+        <div class="bg-gradient-to-r from-black via-cyan-950 to-black border-b border-cyan-500/20 py-1.5 px-4 text-center text-[11px] font-mk text-cyan-300 tracking-widest uppercase flex items-center justify-center gap-4">
+            <span class="flex items-center gap-1.5 text-cyan-400">
+                <i class="fa-solid fa-snowflake animate-spin" style="animation-duration: 8s;"></i> 
+                CÂMARA FRIA LIN KUEI ATIVA (-10°C)
+            </span>
+            <span class="hidden md:inline text-cyan-700">|</span>
+            <span class="hidden md:inline text-white">
+                ARENA: AV. GUADALUPE, 299 - JARDIM AMÉRICA, SP
+            </span>
+            <span class="hidden md:inline text-cyan-700">|</span>
+            <span class="text-red-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-skull"></i> FATALITY NA SEDE
+            </span>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
+            
+            <!-- Subzero Logo -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="w-12 h-12 mk-clip bg-gradient-to-br from-cyan-400 to-blue-700 flex items-center justify-center text-black text-2xl font-black shadow-ice-blast group-hover:rotate-6 transition-transform">
+                    <i class="fa-solid fa-mask"></i>
+                </div>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-black font-mk tracking-widest text-white leading-none flex items-center gap-1">
+                        SUB<span class="text-cyan-400">ZERO</span>
+                    </div>
+                    <div class="text-[10px] font-mk tracking-[0.3em] text-cyan-400 uppercase font-bold">
+                        ADEGA &bull; LIN KUEI REALM
+                    </div>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-mk text-xs tracking-wider uppercase font-bold text-slate-300">
+                <a href="#kombat-hero" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    <span class="text-cyan-500">&gt;</span> Início
+                </a>
+                <a href="#fighters" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    <span class="text-cyan-500">&gt;</span> Escolha seu Lutador
+                </a>
+                <a href="#kombat-packs" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    <span class="text-cyan-500">&gt;</span> Kombat Packs
+                </a>
+                <a href="#templo" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    <span class="text-cyan-500">&gt;</span> Templo (Localização)
+                </a>
+            </nav>
+
+            <!-- Sound Toggle & WhatsApp Action -->
+            <div class="flex items-center gap-3">
+                <button onclick="playFreezeSound()" title="Tocar Som de Gelo Subzero" class="p-2.5 rounded-lg bg-cyan-950 border border-cyan-400/40 text-cyan-300 hover:text-white hover:border-cyan-300 transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <span class="hidden sm:inline text-[10px] font-mk uppercase font-bold">Freeze FX</span>
+                </button>
+
+                <a href="https://wa.me/5512999999999?text=FINISH%20HIM!%20Quero%20fazer%20um%20pedido%20na%20Subzero%20Adega" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 mk-clip bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-black font-mk text-xs tracking-wider uppercase shadow-freeze-glow transition-all flex items-center gap-2 transform hover:scale-105">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span class="hidden sm:inline">CHALLENGE VIA WHATSAPP</span>
+                    <span class="sm:hidden">PEDIR</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- Hero Section: "FINISH YOUR THIRST!" -->
+        <section id="kombat-hero" class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden border-b border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero: The Mortal Kombat Call to Arms -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Fighter Status Pill -->
+                        <div class="inline-flex items-center gap-3 px-4 py-1.5 mk-panel border border-cyan-400 text-cyan-300 text-xs font-mk tracking-widest uppercase">
+                            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                            GRANDMASTER DA BEBIDA TRINCANDO &bull; JARDIM AMÉRICA
+                        </div>
+
+                        <!-- Brutal Headline -->
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black font-mk uppercase tracking-tight text-white leading-none">
+                            FINISH <br>
+                            YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-600 drop-shadow-[0_0_20px_rgba(0,212,255,0.8)]">THIRST!</span>
+                        </h1>
+
+                        <!-- MK Subtitle -->
+                        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-body leading-relaxed">
+                            Cervejas no ponto mais gélido do universo, vinhos selados, destilados letais, gelo e carvão para o seu churrasco. Nenhum calor sobrevive à câmara fria da <strong>Subzero Adega</strong>.
+                        </p>
+
+                        <!-- Kombat Match Status Bars -->
+                        <div class="p-5 mk-panel border border-cyan-500/40 rounded-lg max-w-lg mx-auto lg:mx-0 space-y-3">
+                            <div class="flex justify-between items-center text-xs font-mk">
+                                <span class="text-cyan-400 flex items-center gap-2">
+                                    <i class="fa-solid fa-snowflake"></i> TEMPERATURA DA CERVEJA
+                                </span>
+                                <span class="text-cyan-300 font-bold">-4°C (CONGELAMENTO TOTAL)</span>
+                            </div>
+                            <div class="w-full h-3 bg-slate-900 border border-cyan-700/60 rounded-sm overflow-hidden p-0.5">
+                                <div class="health-bar h-full rounded-sm" style="width: 100%;"></div>
+                            </div>
+
+                            <div class="flex justify-between items-center text-xs font-mk pt-1">
+                                <span class="text-red-400 flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt"></i> AGILIDADE DO DELIVERY NO JARDIM AMÉRICA
+                                </span>
+                                <span class="text-red-400 font-bold">NINJA SPEED</span>
+                            </div>
+                            <div class="w-full h-3 bg-slate-900 border border-red-900/60 rounded-sm overflow-hidden p-0.5">
+                                <div class="h-full bg-gradient-to-r from-amber-500 to-red-500 rounded-sm shadow-[0_0_10px_#ef4444]" style="width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="https://wa.me/5512999999999?text=FINISH%20HIM!%20Quero%20fazer%20um%20pedido%20urgente%20na%20Subzero" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 mk-clip bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-400 text-black font-black font-mk text-sm tracking-widest uppercase shadow-ice-blast flex items-center justify-center gap-3 transform hover:scale-105 transition-all">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                                <span>PEDIR NO WHATSAPP &bull; FATALITY</span>
+                            </a>
+                            <a href="#fighters" class="w-full sm:w-auto px-6 py-4 mk-clip bg-slate-900/90 hover:bg-slate-800 text-cyan-300 font-bold font-mk text-xs tracking-wider uppercase border border-cyan-500/50 hover:border-cyan-400 flex items-center justify-center gap-2 transition-all">
+                                <i class="fa-solid fa-gamepad text-cyan-400"></i>
+                                <span>CHOOSE YOUR FIGHTER</span>
+                            </a>
+                        </div>
+
+                        <!-- Address Banner in Hero -->
+                        <div class="pt-2 flex items-center justify-center lg:justify-start gap-2 text-xs font-mk text-slate-400">
+                            <i class="fa-solid fa-location-crosshairs text-cyan-400"></i>
+                            <span>ARENA: <strong>AVENIDA GUADALUPE, 299 - JARDIM AMÉRICA, SP</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero: Arcade Fighter Showcase Card -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            
+                            <!-- Subzero Mask Glow Backdrop -->
+                            <div class="absolute -inset-2 bg-gradient-to-r from-cyan-500 via-blue-600 to-cyan-400 rounded-2xl blur-xl opacity-40 animate-pulse"></div>
+
+                            <div class="relative mk-panel mk-clip-box p-6 sm:p-8 border-2 border-cyan-400 shadow-ice-blast">
+                                
+                                <!-- Card Header -->
+                                <div class="flex items-center justify-between pb-4 border-b border-cyan-500/30">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-cyan-950 border border-cyan-400 flex items-center justify-center text-cyan-300 text-xl shadow-freeze-glow">
+                                            <i class="fa-solid fa-icicles"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-[10px] font-mk text-cyan-400 tracking-widest uppercase font-bold">Grandmaster Cryomancer</span>
+                                            <h3 class="text-xl font-black font-mk text-white leading-tight">SUB-ZERO</h3>
+                                        </div>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded bg-red-950 border border-red-500 text-red-400 font-mk text-[11px] font-bold">
+                                        FLAWLESS VICTORY
+                                    </span>
+                                </div>
+
+                                <!-- Center Cryomancer Art / Emblem -->
+                                <div class="my-6 relative rounded-xl bg-gradient-to-b from-cyan-950/40 via-slate-900 to-black p-6 border border-cyan-500/30 text-center overflow-hidden">
+                                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.25)_0%,transparent_70%)]"></div>
+                                    
+                                    <div class="relative z-10 space-y-3">
+                                        <div class="w-24 h-24 mx-auto rounded-full bg-slate-950 border-2 border-cyan-400 flex items-center justify-center text-cyan-400 text-5xl shadow-ice-blast">
+                                            <i class="fa-solid fa-snowflake"></i>
+                                        </div>
+                                        <h4 class="text-2xl font-black font-mk text-white tracking-widest uppercase">
+                                            FROZEN TO THE BONE
+                                        </h4>
+                                        <p class="text-xs text-cyan-200/80 font-body">
+                                            "Não há sede que sobreviva ao zero absoluto da Lin Kuei."
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Special Moves List (Cardápio Rápido) -->
+                                <div class="space-y-2.5 text-xs font-mk">
+                                    <div class="flex justify-between items-center p-2.5 bg-slate-900/80 border border-slate-800 rounded">
+                                        <span class="text-slate-300"><i class="fa-solid fa-angle-right text-cyan-400 mr-1.5"></i> ICE BLAST: CERVEJAS</span>
+                                        <span class="text-cyan-400 font-bold">-4°C</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-2.5 bg-slate-900/80 border border-slate-800 rounded">
+                                        <span class="text-slate-300"><i class="fa-solid fa-angle-right text-cyan-400 mr-1.5"></i> SLIDE ATTACK: DESTILADOS</span>
+                                        <span class="text-cyan-400 font-bold">100% ORIGINAIS</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-2.5 bg-slate-900/80 border border-slate-800 rounded">
+                                        <span class="text-slate-300"><i class="fa-solid fa-angle-right text-cyan-400 mr-1.5"></i> COLD CLONE: COMBOS</span>
+                                        <span class="text-red-400 font-bold">ECONOMIA BRUTAL</span>
+                                    </div>
+                                </div>
+
+                                <!-- Card Footer -->
+                                <div class="mt-6 pt-4 border-t border-cyan-500/30 flex items-center justify-between text-[11px] font-mk text-slate-400">
+                                    <span>ARENA JARDIM AMÉRICA</span>
+                                    <span class="text-cyan-400">STATUS: COMBATE ABERTO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- "CHOOSE YOUR FIGHTER" (Catalog Section) -->
+        <section id="fighters" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-block px-3 py-1 bg-cyan-950 border border-cyan-400 text-cyan-400 text-xs font-mk tracking-widest uppercase mb-3">
+                        SELECT SCREEN
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black font-mk uppercase tracking-wider text-white">
+                        CHOOSE YOUR <span class="text-cyan-400">FIGHTER</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-3 font-body">
+                        Selecione seu guerreiro alcoólico ou insumo para vencer o calor. Clique no lutador para pedir no WhatsApp.
+                    </p>
+
+                    <!-- Filter Tabs -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-8">
+                        <button onclick="filterFighters('todos')" class="fighter-btn active px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-cyan-400 text-black shadow-freeze-glow" data-category="todos">
+                            Todos os Lutadores
+                        </button>
+                        <button onclick="filterFighters('cervejas')" class="fighter-btn px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-slate-900 text-slate-300 hover:text-white border border-slate-800 hover:border-cyan-400" data-category="cervejas">
+                            🍺 Cervejas Ice Blast
+                        </button>
+                        <button onclick="filterFighters('destilados')" class="fighter-btn px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-slate-900 text-slate-300 hover:text-white border border-slate-800 hover:border-cyan-400" data-category="destilados">
+                            🥃 Destilados Brutais
+                        </button>
+                        <button onclick="filterFighters('vinhos')" class="fighter-btn px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-slate-900 text-slate-300 hover:text-white border border-slate-800 hover:border-cyan-400" data-category="vinhos">
+                            🍷 Vinhos de Sangue
+                        </button>
+                        <button onclick="filterFighters('churrasco')" class="fighter-btn px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-slate-900 text-slate-300 hover:text-white border border-slate-800 hover:border-cyan-400" data-category="churrasco">
+                            🧊 Gelo & Fogo (Carvão)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fighters Roster Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="fighterGrid">
+                    
+                    <!-- Fighter 1: Heineken -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="cervejas">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-cyan-400 font-bold bg-cyan-950 px-2 py-0.5 border border-cyan-800">
+                                    PURO MALTE
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">LN 330ML</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.6)]">
+                                    <i class="fa-solid fa-beer-mug-empty"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-emerald-400 font-bold tracking-widest uppercase">
+                                    [ SUBZERO FREEZE: -4°C ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                HEINEKEN LAGER
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Fatality:</strong> Estalando de gelada na câmara fria. O clássico invicto.
+                            </p>
+
+                            <!-- Stat meters -->
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>CONGELAMENTO:</span>
+                                    <span class="text-cyan-400">100% MAX</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 8,99</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Heineken%20Long%20Neck%20trincando" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 2: Corona Extra -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="cervejas">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-amber-400 font-bold bg-amber-950 px-2 py-0.5 border border-amber-800">
+                                    REFRESCANTE
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">LN 330ML</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-amber-400 drop-shadow-[0_0_12px_rgba(251,191,36,0.6)]">
+                                    <i class="fa-solid fa-bottle-droplet"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-amber-400 font-bold tracking-widest uppercase">
+                                    [ WEAPON: LIMÃO ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                CORONA EXTRA
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Special:</strong> Refrescância solar temperada pelo gelo subzero.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>CONGELAMENTO:</span>
+                                    <span class="text-cyan-400">95%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 9,49</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Corona%20Extra%20trincando" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 3: Whisky Red Label -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="destilados">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-red-400 font-bold bg-red-950 px-2 py-0.5 border border-red-800">
+                                    HEAVY HITTER
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">1 LITRO SELADO</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-red-500 drop-shadow-[0_0_12px_rgba(239,68,68,0.7)]">
+                                    <i class="fa-solid fa-whiskey-glass"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-red-400 font-bold tracking-widest uppercase">
+                                    [ BRUTALITY: 40% VOL ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                RED LABEL 1L
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Fatality:</strong> O escocês imbatível da noite. 100% original com selo IPI.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>FORÇA DO GOLPE:</span>
+                                    <span class="text-red-400">100% FATAL</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-red-500" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 99,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Red%20Label%201L%20Original" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 4: Gin Tanqueray -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="destilados">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-cyan-400 font-bold bg-cyan-950 px-2 py-0.5 border border-cyan-800">
+                                    LONDON DRY
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">750ML SELADO</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-cyan-300 drop-shadow-[0_0_12px_rgba(0,212,255,0.7)]">
+                                    <i class="fa-solid fa-martini-glass-citrus"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-cyan-300 font-bold tracking-widest uppercase">
+                                    [ BOTANICAL COMBO ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                GIN TANQUERAY
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Special:</strong> Quatro botânicos lendários para coquetéis implacáveis.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>PRECISÃO:</span>
+                                    <span class="text-cyan-400">98%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400" style="width: 98%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 119,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Gin%20Tanqueray" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 5: Vodka Absolut -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="destilados">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-blue-400 font-bold bg-blue-950 px-2 py-0.5 border border-blue-800">
+                                    SWEDISH BLADE
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">1 LITRO</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-blue-300 drop-shadow-[0_0_12px_rgba(147,197,253,0.7)]">
+                                    <i class="fa-solid fa-wine-bottle"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-blue-300 font-bold tracking-widest uppercase">
+                                    [ ZERO IMPURITIES ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                VODKA ABSOLUT 1L
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Combo:</strong> Pura como o gelo de Outworld, perfeita para drinks mortais.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>PUREZA:</span>
+                                    <span class="text-blue-400">100%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-400" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 94,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Vodka%20Absolut%201L" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 6: Casillero del Diablo -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="vinhos">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-red-500 font-bold bg-red-950 px-2 py-0.5 border border-red-800">
+                                    BLOOD HARVEST
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">750ML CHILE</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-rose-500 drop-shadow-[0_0_12px_rgba(244,63,94,0.7)]">
+                                    <i class="fa-solid fa-wine-glass"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-rose-400 font-bold tracking-widest uppercase">
+                                    [ CABERNET SAUVIGNON ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                CASILLERO DEL DIABLO
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Lore:</strong> Protegido por lendas sombrias. Corpo potente e notas marcantes.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>INTENSIDADE:</span>
+                                    <span class="text-rose-400">92%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-rose-500" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 58,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Casillero%20del%20Diablo" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 7: Saco de Gelo 5kg (Subzero Shield) -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="churrasco">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-cyan-400 font-bold bg-cyan-950 px-2 py-0.5 border border-cyan-800">
+                                    ICE SHIELD
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">SACO 5KG</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-cyan-300 drop-shadow-[0_0_12px_rgba(0,212,255,0.7)]">
+                                    <i class="fa-solid fa-cube"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-cyan-300 font-bold tracking-widest uppercase">
+                                    [ ABSOLUTE ZERO ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                GELO FILTRADO 5KG
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Armor:</strong> Gelo cristalino para blindar suas bebidas do calor insuportável.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>RESISTÊNCIA AO CALOR:</span>
+                                    <span class="text-cyan-400">100% MAX</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 14,00</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Gelo%20Filtrado%205kg" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fighter 8: Carvão Vegetal (Scorpion's Doom) -->
+                    <div class="fighter-card p-5 mk-clip-box flex flex-col justify-between" data-category="churrasco">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mk text-orange-400 font-bold bg-orange-950 px-2 py-0.5 border border-orange-800">
+                                    HELLFIRE ELEMENT
+                                </span>
+                                <span class="text-[10px] font-mk text-slate-400">SACO 2.5KG</span>
+                            </div>
+                            
+                            <div class="h-40 rounded bg-slate-950/80 border border-slate-800 flex flex-col items-center justify-center relative p-3">
+                                <div class="text-5xl text-orange-500 drop-shadow-[0_0_12px_rgba(249,115,22,0.7)]">
+                                    <i class="fa-solid fa-fire-flame-curved"></i>
+                                </div>
+                                <span class="mt-2 text-[10px] font-mk text-orange-400 font-bold tracking-widest uppercase">
+                                    [ BRASA DE CHURRASCO ]
+                                </span>
+                            </div>
+
+                            <h3 class="text-lg font-black font-mk text-white mt-4 uppercase">
+                                CARVÃO SELECIONADO
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1 font-body">
+                                <strong>Flame:</strong> Até o mestre do gelo reconhece que churrasco precisa de fogo vivo.
+                            </p>
+
+                            <div class="mt-3 space-y-1.5 text-[10px] font-mk">
+                                <div class="flex justify-between text-slate-400">
+                                    <span>PODER DE FOGO:</span>
+                                    <span class="text-orange-400">100%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-orange-500" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">DAMAGE VALUE</span>
+                                <span class="text-xl font-black font-mk text-cyan-400">R$ 18,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20convocar%20Carvao%20para%20churrasco" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp"></i> CONVOCAR
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- "KOMBAT PACKS" (Combos Mortais Section) -->
+        <section id="kombat-packs" class="py-20 relative bg-slate-950/80 border-t-2 border-cyan-500/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <div class="inline-block px-3 py-1 bg-red-950 border border-red-500 text-red-400 text-xs font-mk tracking-widest uppercase mb-3">
+                        TEST YOUR MIGHT
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black font-mk uppercase tracking-wider text-white">
+                        KOMBAT <span class="text-cyan-400">PACKS</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-3 font-body">
+                        Combos brutais formulados para festas, churrascos e batalhas sem fim no Jardim América.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Pack 1 -->
+                    <div class="mk-panel mk-clip-box p-7 flex flex-col justify-between border-2 border-cyan-500/40 hover:border-cyan-400 transition-all shadow-freeze-glow">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2 py-0.5 bg-cyan-950 text-cyan-300 font-mk text-[11px] font-bold border border-cyan-600">
+                                    PACK 01 &bull; TROPICAL
+                                </span>
+                                <i class="fa-solid fa-martini-glass text-cyan-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-black font-mk text-white uppercase tracking-normal sm:tracking-wide leading-snug">
+                                LIN KUEI GIN PACK
+                            </h3>
+                            <p class="text-slate-400 text-xs mt-1 font-body">Combo de precisão e frescor extremo.</p>
+
+                            <ul class="mt-6 space-y-3 text-xs font-mk text-slate-300">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>1 Garrafa Gin Tanqueray 750ml</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>4 Latas de Tônica Schweppes / Red Bull</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>1 Saco de Gelo Subzero Filtrado</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>Copões acrílicos especiais</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">KOMBAT DEAL</span>
+                                <span class="text-2xl font-black font-mk text-cyan-400">R$ 149,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20o%20Kombat%20Pack%20Gin%20Lin%20Kuei" target="_blank" rel="noopener noreferrer" class="px-4 py-2 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-xs tracking-wider uppercase transition-all shadow-freeze-glow">
+                                PEDIR PACK
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pack 2 (Destaque Fatal) -->
+                    <div class="relative transform md:-translate-y-3 pt-3 flex flex-col">
+                        <!-- Badge Fatality Deal posicionado fora do container com clip-path para não ser cortado -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 z-20 px-5 py-1.5 mk-clip bg-red-600 text-white font-black font-mk text-xs uppercase tracking-widest shadow-blood-glow whitespace-nowrap">
+                            ★ FATALITY DEAL ★
+                        </div>
+                        <div class="mk-panel mk-clip-box p-7 pt-9 flex-1 flex flex-col justify-between border-2 border-red-500 shadow-blood-glow bg-gradient-to-b from-slate-900 via-slate-950 to-red-950/40">
+                            <div>
+                                <div class="flex justify-between items-center mb-4 mt-1">
+                                    <span class="px-2.5 py-1 bg-red-950/90 text-red-300 font-mk text-[11px] font-bold border border-red-700 rounded-sm">
+                                        PACK 02 &bull; BRUTAL
+                                    </span>
+                                    <i class="fa-solid fa-whiskey-glass text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-black font-mk text-white uppercase tracking-normal sm:tracking-wide leading-snug break-words">
+                                    WHISKY &amp; RED BULL <span class="text-red-500">FATALITY</span>
+                                </h3>
+                                <p class="text-slate-400 text-xs mt-1.5 font-body">O combo mais perigoso e procurado da madrugada.</p>
+
+                                <ul class="mt-6 space-y-3 text-xs font-mk text-slate-200">
+                                    <li class="flex items-center gap-2">
+                                        <i class="fa-solid fa-skull text-red-500"></i>
+                                        <strong class="text-white">1 Whisky Red Label 1L (Original)</strong>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fa-solid fa-skull text-red-500"></i>
+                                        <span>5 Latas Red Bull Energy Drink</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fa-solid fa-skull text-red-500"></i>
+                                        <span>1 Saco de Gelo de Coco especial</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class="fa-solid fa-skull text-red-500"></i>
+                                        <span>Copões personalizados Subzero</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-red-900/40 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] font-mk text-slate-400 block line-through">R$ 170,00</span>
+                                    <span class="text-2xl font-black font-mk text-red-400">R$ 139,90</span>
+                                </div>
+                                <a href="https://wa.me/5512999999999?text=Quero%20o%20Whisky%20Red%20Bull%20Fatality%20Pack" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 mk-clip bg-red-600 hover:bg-red-500 text-white font-black font-mk text-xs tracking-wider uppercase transition-all shadow-blood-glow">
+                                    FATALITY!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pack 3 -->
+                    <div class="mk-panel mk-clip-box p-7 flex flex-col justify-between border-2 border-cyan-500/40 hover:border-cyan-400 transition-all shadow-freeze-glow">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2 py-0.5 bg-orange-950 text-orange-300 font-mk text-[11px] font-bold border border-orange-600">
+                                    PACK 03 &bull; CHURRASCO
+                                </span>
+                                <i class="fa-solid fa-fire text-orange-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-black font-mk text-white uppercase tracking-normal sm:tracking-wide leading-snug">
+                                ICE &amp; FIRE CHURRAS
+                            </h3>
+                            <p class="text-slate-400 text-xs mt-1 font-body">Equilíbrio místico entre gelo trincando e brasa.</p>
+
+                            <ul class="mt-6 space-y-3 text-xs font-mk text-slate-300">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>1 Fardo Cerveja Puro Malte (12 Unid)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>1 Saco de Carvão Graúdo 2.5kg</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>1 Saco de Gelo Filtrado 5kg</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-skull text-cyan-400"></i>
+                                    <span>1 Acendedor de brasa ultra-rápido</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mk text-slate-500 block">KOMBAT DEAL</span>
+                                <span class="text-2xl font-black font-mk text-cyan-400">R$ 89,90</span>
+                            </div>
+                            <a href="https://wa.me/5512999999999?text=Quero%20o%20Pack%20Ice%20and%20Fire%20Churras" target="_blank" rel="noopener noreferrer" class="px-4 py-2 mk-clip bg-cyan-400 hover:bg-cyan-300 text-black font-black font-mk text-xs tracking-wider uppercase transition-all shadow-freeze-glow">
+                                PEDIR PACK
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- "LIN KUEI TEMPLE" (Location & Contact Section) -->
+        <section id="templo" class="py-20 relative border-t-2 border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left: Fortress Info -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <div class="inline-block px-3 py-1 bg-cyan-950 border border-cyan-400 text-cyan-400 text-xs font-mk tracking-widest uppercase">
+                            TEMPLE OF THE LIN KUEI
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-black font-mk uppercase tracking-wider text-white">
+                            ARENA DE COMBATE &bull; ONDE ESTAMOS
+                        </h2>
+
+                        <p class="text-slate-300 text-sm font-body leading-relaxed">
+                            Ponto físico com câmara fria industrial no Jardim América. Venha retirar ou chame o delivery ninja que chega em tempo recorde.
+                        </p>
+
+                        <!-- Endereço Card -->
+                        <div class="p-6 mk-panel mk-clip-box border-2 border-cyan-400/80 space-y-4 shadow-freeze-glow">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 mk-clip bg-cyan-400 flex items-center justify-center text-black text-2xl font-black shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-mk text-cyan-400 tracking-widest uppercase font-bold">ENDEREÇO OFICIAL</span>
+                                    <h3 class="text-lg font-black font-mk text-white mt-0.5">
+                                        AVENIDA GUADALUPE, 299
+                                    </h3>
+                                    <p class="text-sm font-mk text-cyan-300">JARDIM AMÉRICA &bull; SP</p>
+                                    <p class="text-xs text-slate-400 font-body mt-1">Estacionamento fácil e retirada expressa</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Guadalupe,+299+-+Jardim+Am%C3%A9rica,+SP" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 mk-clip bg-slate-800 hover:bg-slate-700 text-cyan-300 font-mk text-xs uppercase tracking-wider border border-slate-700 flex items-center gap-1.5 transition-colors">
+                                    <i class="fa-solid fa-map-location-dot"></i> Google Maps
+                                </a>
+                                <a href="https://waze.com/ul?q=Avenida%20Guadalupe%2C%20299%20Jardim%20Am%C3%A9rica%20SP" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 mk-clip bg-slate-800 hover:bg-slate-700 text-cyan-300 font-mk text-xs uppercase tracking-wider border border-slate-700 flex items-center gap-1.5 transition-colors">
+                                    <i class="fa-brands fa-waze"></i> Waze
+                                </a>
+                                <button onclick="copyAddress()" id="copyBtn" class="px-3.5 py-2 mk-clip bg-slate-800 hover:bg-slate-700 text-slate-300 font-mk text-xs uppercase tracking-wider border border-slate-700 flex items-center gap-1.5 transition-colors">
+                                    <i class="fa-regular fa-copy text-cyan-400"></i> Copiar Endereço
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Horários de Combate -->
+                        <div class="p-5 mk-panel border border-slate-800 rounded space-y-2 text-xs font-mk">
+                            <h4 class="text-slate-400 uppercase tracking-widest text-[11px] font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-clock text-cyan-400"></i> HORÁRIO DE ATENDIMENTO
+                            </h4>
+                            <div class="flex justify-between py-1 border-b border-slate-800 text-slate-300">
+                                <span>SEGUNDA-FEIRA:</span>
+                                <span>14:00 ÀS 22:00</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800 text-slate-300">
+                                <span>TERÇA A QUINTA:</span>
+                                <span>10:00 ÀS 23:00</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800 text-cyan-300 font-bold bg-cyan-950/40 px-2 rounded">
+                                <span>SEXTA &amp; SÁBADO (MADRUGADA):</span>
+                                <span>10:00 ÀS 02:00</span>
+                            </div>
+                            <div class="flex justify-between py-1 text-slate-300">
+                                <span>DOMINGO:</span>
+                                <span>10:00 ÀS 20:00</span>
+                            </div>
+                        </div>
+
+                        <!-- Callout Button -->
+                        <a href="https://wa.me/5512999999999?text=Quero%20fazer%20um%20pedido%20para%20entrega%20no%20Jardim%20America" target="_blank" rel="noopener noreferrer" class="w-full py-4 mk-clip bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-400 text-black font-black font-mk text-sm tracking-widest uppercase shadow-ice-blast flex items-center justify-center gap-3 transition-all">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            SOLICITAR DELIVERY NINJA
+                        </a>
+                    </div>
+
+                    <!-- Right: Google Maps Embed with Dark MK Theme -->
+                    <div class="lg:col-span-7">
+                        <div class="mk-panel mk-clip-box p-3 border-2 border-cyan-400 shadow-ice-blast">
+                            <div class="w-full h-[450px] sm:h-[500px] rounded overflow-hidden relative">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.257375210287!2d-45.89279532386348!3d-23.23368294978187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4ac0c04fa285%3A0xe212c46231d68379!2sAv.%20Guadalupe%2C%20299%20-%20Jardim%20America%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1713000000000!5m2!1spt-BR!2sbr" 
+                                    class="w-full h-full border-0 filter invert-[90%] hue-rotate-180 contrast-125" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Localização Subzero Adega - Mortal Kombat Edition">
+                                </iframe>
+                                
+                                <div class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs p-4 mk-panel border border-cyan-400 shadow-freeze-glow">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 mk-clip bg-cyan-400 text-black flex items-center justify-center font-black text-xl">
+                                            <i class="fa-solid fa-mask"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="text-sm font-black font-mk text-white uppercase">SUBZERO ADEGA</h5>
+                                            <p class="text-xs text-cyan-300 font-mk">AV. GUADALUPE, 299</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 pt-2 border-t border-cyan-500/40 flex items-center justify-between text-[11px] font-mk">
+                                        <span class="text-emerald-400 font-bold">&bull; ARENA ONLINE</span>
+                                        <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Guadalupe,+299+-+Jardim+Am%C3%A9rica,+SP" target="_blank" class="text-cyan-400 hover:underline">GPS &rarr;</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t-2 border-cyan-500/40 bg-black py-12 text-slate-400 text-xs relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 mk-clip bg-cyan-400 flex items-center justify-center text-black font-bold">
+                            <i class="fa-solid fa-snowflake"></i>
+                        </div>
+                        <span class="text-xl font-black font-mk text-white tracking-widest">
+                            SUB<span class="text-cyan-400">ZERO</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed font-body">
+                        Grandmaster das bebidas geladas no Jardim América. Fatality na sede com procedência 100% e câmara fria absoluta.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold font-mk text-xs uppercase tracking-wider mb-3">Reinos &amp; Acesso</h5>
+                    <ul class="space-y-2 font-mk text-[11px]">
+                        <li><a href="#kombat-hero" class="hover:text-cyan-400 transition-colors">&gt; Início</a></li>
+                        <li><a href="#fighters" class="hover:text-cyan-400 transition-colors">&gt; Choose Your Fighter</a></li>
+                        <li><a href="#kombat-packs" class="hover:text-cyan-400 transition-colors">&gt; Kombat Packs</a></li>
+                        <li><a href="#templo" class="hover:text-cyan-400 transition-colors">&gt; Templo Lin Kuei</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold font-mk text-xs uppercase tracking-wider mb-3">Arena Jardim América</h5>
+                    <p class="text-slate-300 font-mk text-[11px]">Avenida Guadalupe, 299</p>
+                    <p class="text-slate-400 font-mk text-[11px]">Jardim América - SP</p>
+                    <p class="text-cyan-400 font-mk text-[11px] mt-1">CEP: 12235-000</p>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold font-mk text-xs uppercase tracking-wider mb-3">Aviso Mortal</h5>
+                    <div class="p-3 bg-red-950/40 border border-red-700/60 rounded text-[11px] font-body text-slate-400">
+                        <p class="font-mk font-bold text-red-400 mb-1">PROIBIDO PARA MENORES</p>
+                        A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos (Artigo 243 da Lei nº 8.069/1990). Se beber, não dirija.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-600 font-mk text-[10px] tracking-wider uppercase">
+                <p>&copy; 2026 Subzero Adega &bull; Mortal Kombat Inspired Fan Design. Av. Guadalupe, 299 - Jardim América, SP.</p>
+                <p class="text-cyan-400">YOUR SOUL IS MINE... AND YOUR BEER IS COLD</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me/5512999999999?text=FINISH%20HIM!%20Quero%20fazer%20um%20pedido%20na%20Subzero" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 w-16 h-16 mk-clip bg-gradient-to-r from-cyan-400 to-blue-600 text-black flex items-center justify-center text-3xl shadow-ice-blast hover:scale-110 transition-transform duration-300" aria-label="Pedir no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Interactive Scripts: Web Audio Synth & Age Modal & Snow Effect -->
+    <script>
+        // Modal de Idade (+18)
+        function confirmAge(isAdult) {
+            if (isAdult) {
+                localStorage.setItem('subzero_mk_age_confirmed', 'true');
+                playFreezeSound();
+                document.getElementById('mkAgeModal').classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    document.getElementById('mkAgeModal').style.display = 'none';
+                }, 300);
+            } else {
+                alert('Apenas maiores de 18 anos podem adentrar a Subzero Adega.');
+                window.location.href = 'https://www.google.com';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('subzero_mk_age_confirmed') === 'true') {
+                const modal = document.getElementById('mkAgeModal');
+                if (modal) modal.style.display = 'none';
+            }
+            initSnowEffect();
+
+            // Garantir reprodução contínua do vídeo de fundo
+            const bgVideo = document.getElementById('bgVideo');
+            if (bgVideo) {
+                bgVideo.play().catch(() => {});
+            }
+        });
+
+        // Web Audio API: Efeito Sonoro de Congelamento Subzero (Freeze Sound FX)
+        function playFreezeSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+
+                // Oscilador 1: Onda Cortante de Gelo
+                const osc1 = ctx.createOscillator();
+                const gain1 = ctx.createGain();
+                osc1.type = 'sawtooth';
+                osc1.frequency.setValueAtTime(800, ctx.currentTime);
+                osc1.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.4);
+
+                gain1.gain.setValueAtTime(0.25, ctx.currentTime);
+                gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+
+                osc1.connect(gain1);
+                gain1.connect(ctx.destination);
+
+                // Oscilador 2: Sub-Grave de Impacto
+                const osc2 = ctx.createOscillator();
+                const gain2 = ctx.createGain();
+                osc2.type = 'sine';
+                osc2.frequency.setValueAtTime(150, ctx.currentTime);
+                osc2.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.5);
+
+                gain2.gain.setValueAtTime(0.4, ctx.currentTime);
+                gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+
+                osc2.connect(gain2);
+                gain2.connect(ctx.destination);
+
+                osc1.start();
+                osc2.start();
+                osc1.stop(ctx.currentTime + 0.4);
+                osc2.stop(ctx.currentTime + 0.5);
+            } catch(e) {
+                console.log("Audio FX not triggered: ", e);
+            }
+        }
+
+        // Filtro do Select Screen (Choose your fighter)
+        function filterFighters(cat) {
+            const buttons = document.querySelectorAll('.fighter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === cat) {
+                    btn.className = 'fighter-btn active px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-cyan-400 text-black shadow-freeze-glow';
+                } else {
+                    btn.className = 'fighter-btn px-4 py-2 mk-clip text-xs font-mk font-bold uppercase transition-all bg-slate-900 text-slate-300 hover:text-white border border-slate-800 hover:border-cyan-400';
+                }
+            });
+
+            const cards = document.querySelectorAll('.fighter-card');
+            cards.forEach(card => {
+                const cCat = card.getAttribute('data-category');
+                if (cat === 'todos' || cCat === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Copiar Endereço
+        function copyAddress() {
+            const address = "Avenida Guadalupe, 299 - Jardim América, SP";
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerHTML = '<i class="fa-solid fa-check text-cyan-400"></i> COPIADO!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-regular fa-copy text-cyan-400"></i> Copiar Endereço';
+                }, 2500);
+            });
+        }
+
+        // Canvas de Nevasca / Partículas de Gelo Lin Kuei
+        function initSnowEffect() {
+            const canvas = document.getElementById('snowCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const flakes = [];
+            const count = 55;
+
+            for (let i = 0; i < count; i++) {
+                flakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 2.5 + 0.8,
+                    d: Math.random() * count,
+                    speedY: Math.random() * 1.2 + 0.5,
+                    speedX: Math.random() * 0.8 - 0.4,
+                    opacity: Math.random() * 0.7 + 0.3
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = "rgba(0, 212, 255, 0.75)";
+                ctx.beginPath();
+                for (let i = 0; i < count; i++) {
+                    const f = flakes[i];
+                    ctx.moveTo(f.x, f.y);
+                    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+                }
+                ctx.fill();
+                update();
+                requestAnimationFrame(draw);
+            }
+
+            function update() {
+                for (let i = 0; i < count; i++) {
+                    const f = flakes[i];
+                    f.y += f.speedY;
+                    f.x += f.speedX;
+
+                    if (f.y > height) {
+                        flakes[i] = {
+                            x: Math.random() * width,
+                            y: 0,
+                            r: f.r,
+                            d: f.d,
+                            speedY: f.speedY,
+                            speedX: f.speedX,
+                            opacity: f.opacity
+                        };
+                    }
+                }
+            }
+
+            draw();
+        }
+    </script>
+</body>
+</html>

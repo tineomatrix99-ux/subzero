@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="iceGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#050914" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#70f0ff"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with subtle border -->
+  <rect x="4" y="4" width="92" height="92" rx="22" fill="#050914" stroke="#00d4ff" stroke-width="3.5" />
+  <circle cx="50" cy="50" r="38" fill="url(#iceGlow)" />
+  
+  <!-- Subzero 6-point Snowflake Icon -->
+  <g stroke="url(#neonCyan)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 3 Axis lines -->
+    <line x1="50" y1="18" x2="50" y2="82" />
+    <line x1="22.28" y1="34" x2="77.72" y2="66" />
+    <line x1="22.28" y1="66" x2="77.72" y2="34" />
+    
+    <!-- Outer Chevron Branches -->
+    <!-- Top -->
+    <path d="M43 28 L50 35 L57 28" fill="none" stroke-width="3.5" />
+    <!-- Bottom -->
+    <path d="M43 72 L50 65 L57 72" fill="none" stroke-width="3.5" />
+    <!-- Top Left -->
+    <path d="M29 44 L37 42 L34 34" fill="none" stroke-width="3.5" />
+    <!-- Bottom Right -->
+    <path d="M71 56 L63 58 L66 66" fill="none" stroke-width="3.5" />
+    <!-- Bottom Left -->
+    <path d="M34 66 L37 58 L29 56" fill="none" stroke-width="3.5" />
+    <!-- Top Right -->
+    <path d="M66 34 L63 42 L71 44" fill="none" stroke-width="3.5" />
+  </g>
+  
+  <!-- Center Core Crystal -->
+  <circle cx="50" cy="50" r="5" fill="#ffffff" stroke="#00f2fe" stroke-width="2.5" />
+  
+  <!-- Outer glowing crystal points -->
+  <circle cx="50" cy="18" r="2.5" fill="#ffffff" />
+  <circle cx="50" cy="82" r="2.5" fill="#ffffff" />
+  <circle cx="22.28" cy="34" r="2.5" fill="#ffffff" />
+  <circle cx="77.72" cy="66" r="2.5" fill="#ffffff" />
+  <circle cx="22.28" cy="66" r="2.5" fill="#ffffff" />
+  <circle cx="77.72" cy="34" r="2.5" fill="#ffffff" />
+</svg>
