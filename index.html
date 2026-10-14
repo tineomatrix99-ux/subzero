@@ -297,9 +297,9 @@
                     <span>Início</span>
                 </a>
 
-                <button onclick="playFreezeSound()" title="Tocar Som de Gelo Subzero" class="p-2.5 rounded-lg bg-cyan-950 border border-cyan-400/40 text-cyan-300 hover:text-white hover:border-cyan-300 transition-all text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-volume-high"></i>
-                    <span class="hidden sm:inline text-[10px] font-mk uppercase font-bold">Freeze FX</span>
+                <button onclick="playFatalitySound()" title="Tocar Som Fatality" class="p-2.5 rounded-lg bg-red-950/80 border border-red-500/50 text-red-300 hover:text-white hover:border-red-400 transition-all text-sm flex items-center gap-2 shadow-blood-glow">
+                    <i class="fa-solid fa-skull text-red-400"></i>
+                    <span class="hidden sm:inline text-[10px] font-mk uppercase font-bold text-red-300">Fatality FX</span>
                 </button>
 
                 <a href="https://wa.me/5512999999999?text=FINISH%20HIM!%20Quero%20fazer%20um%20pedido%20na%20Subzero%20Adega" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 mk-clip bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-black font-mk text-xs tracking-wider uppercase shadow-freeze-glow transition-all flex items-center gap-2 transform hover:scale-105">
@@ -1224,7 +1224,7 @@
         function confirmAge(isAdult) {
             if (isAdult) {
                 localStorage.setItem('subzero_mk_age_confirmed', 'true');
-                playFreezeSound();
+                playFatalitySound();
                 document.getElementById('mkAgeModal').classList.add('opacity-0', 'pointer-events-none');
                 setTimeout(() => {
                     document.getElementById('mkAgeModal').style.display = 'none';
@@ -1249,47 +1249,22 @@
             }
         });
 
-        // Web Audio API: Efeito Sonoro de Congelamento Subzero (Freeze Sound FX)
-        function playFreezeSound() {
+        // Áudio Fatality (reproduz fatality.mp3)
+        let fatalityAudio = null;
+        function playFatalitySound() {
             try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext();
-
-                // Oscilador 1: Onda Cortante de Gelo
-                const osc1 = ctx.createOscillator();
-                const gain1 = ctx.createGain();
-                osc1.type = 'sawtooth';
-                osc1.frequency.setValueAtTime(800, ctx.currentTime);
-                osc1.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.4);
-
-                gain1.gain.setValueAtTime(0.25, ctx.currentTime);
-                gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
-
-                osc1.connect(gain1);
-                gain1.connect(ctx.destination);
-
-                // Oscilador 2: Sub-Grave de Impacto
-                const osc2 = ctx.createOscillator();
-                const gain2 = ctx.createGain();
-                osc2.type = 'sine';
-                osc2.frequency.setValueAtTime(150, ctx.currentTime);
-                osc2.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.5);
-
-                gain2.gain.setValueAtTime(0.4, ctx.currentTime);
-                gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
-
-                osc2.connect(gain2);
-                gain2.connect(ctx.destination);
-
-                osc1.start();
-                osc2.start();
-                osc1.stop(ctx.currentTime + 0.4);
-                osc2.stop(ctx.currentTime + 0.5);
-            } catch(e) {
-                console.log("Audio FX not triggered: ", e);
+                if (!fatalityAudio) {
+                    fatalityAudio = new Audio('fatality.mp3');
+                }
+                fatalityAudio.currentTime = 0;
+                fatalityAudio.play().catch(e => {
+                    console.log('Reprodução de áudio aguardando interação do usuário:', e);
+                });
+            } catch (err) {
+                console.error('Erro ao reproduzir fatality.mp3:', err);
             }
         }
+        const playFreezeSound = playFatalitySound;
 
         // Filtro do Select Screen (Choose your fighter)
         function filterFighters(cat) {
